@@ -10,11 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
 
-        Button("Start Download") {
-
-        }.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            .padding(.top, 100)
-
+        Home()
     }
 
 }
