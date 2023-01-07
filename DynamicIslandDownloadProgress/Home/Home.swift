@@ -26,6 +26,7 @@ struct Home_Previews: PreviewProvider {
 }
 
 struct DynamicProgressView: View {
+    @State var showProgressView: Bool = false
     var body: some View {
         Canvas { ctx, size in
 
@@ -46,7 +47,8 @@ struct DynamicProgressView: View {
             
             ProgressComponents().tag(1)
             ProgressComponents(isCircle: true).tag(2)
-
+        }.onTapGesture {
+            showProgressView.toggle()
         }
     }
 
@@ -59,7 +61,8 @@ struct DynamicProgressView: View {
                 .fill(.black)
                 .frame(width: 37,height: 37)
                 .frame(width: 126,alignment: .trailing)
-                .offset(x: 45)
+                .offset(x: showProgressView ? 45 : 0)
+                .animation(.interactiveSpring(response: 0.6,dampingFraction: 0.7,blendDuration: 0.7),value: showProgressView)
 
         } else {
             Capsule()
