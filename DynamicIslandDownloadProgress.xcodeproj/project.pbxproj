@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B367E6C29697E5800041519 /* ProgressConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B367E6B29697E5800041519 /* ProgressConfig.swift */; };
 		7B50BF9029676B9A006410E4 /* DynamicIslandDownloadProgressApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50BF8F29676B9A006410E4 /* DynamicIslandDownloadProgressApp.swift */; };
 		7B50BF9229676B9A006410E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B50BF9129676B9A006410E4 /* ContentView.swift */; };
 		7B50BF9429676B9D006410E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B50BF9329676B9D006410E4 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B367E6B29697E5800041519 /* ProgressConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressConfig.swift; sourceTree = "<group>"; };
 		7B50BF8C29676B9A006410E4 /* DynamicIslandDownloadProgress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicIslandDownloadProgress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B50BF8F29676B9A006410E4 /* DynamicIslandDownloadProgressApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIslandDownloadProgressApp.swift; sourceTree = "<group>"; };
 		7B50BF9129676B9A006410E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B367E6A2969759000041519 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B367E6B29697E5800041519 /* ProgressConfig.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7B50BF8329676B9A006410E4 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,7 @@
 		7B50BF8E29676B9A006410E4 /* DynamicIslandDownloadProgress */ = {
 			isa = PBXGroup;
 			children = (
+				7B367E6A2969759000041519 /* Model */,
 				7BC21E2B2968B39A003CE813 /* Home */,
 				7B50BF8F29676B9A006410E4 /* DynamicIslandDownloadProgressApp.swift */,
 				7B50BF9129676B9A006410E4 /* ContentView.swift */,
@@ -274,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B367E6C29697E5800041519 /* ProgressConfig.swift in Sources */,
 				7B50BF9929676B9D006410E4 /* Persistence.swift in Sources */,
 				7B50BF9229676B9A006410E4 /* ContentView.swift in Sources */,
 				7BC21E2D2968B3D2003CE813 /* Home.swift in Sources */,
