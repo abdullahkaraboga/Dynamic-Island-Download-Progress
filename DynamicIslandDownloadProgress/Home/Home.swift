@@ -32,7 +32,7 @@ struct Home: View {
                 sampleProgress = 0
             }
         }
-
+            .statusBarHidden(progressBar.hideStatusBar)
     }
 }
 
@@ -45,6 +45,7 @@ struct Home_Previews: PreviewProvider {
 class DynamicProgress: NSObject, ObservableObject {
 
     @Published var isAdded: Bool = false
+    @Published var hideStatusBar: Bool = false
 
     func addProgressView(config: ProgressConfig) {
 
@@ -55,7 +56,7 @@ class DynamicProgress: NSObject, ObservableObject {
             let hostingView = UIHostingController(rootView: swiftUIView)
             hostingView.view.frame = screenSize()
             hostingView.view.backgroundColor = .clear
-            hostingView.view.tag = 1089
+            hostingView.view.tag = 1009
             rootController().view.addSubview(hostingView.view)
             isAdded = true
 
@@ -77,6 +78,10 @@ class DynamicProgress: NSObject, ObservableObject {
             print("Removed")
         }
 
+    }
+    
+    func removeProgressWithAnimations(){
+        NotificationCenter.default.post(name: NSNotification.Name("CLOSE_PROGRESS_VIEW"), object: nil)
     }
 
     func screenSize() -> CGRect {
@@ -147,6 +152,12 @@ struct DynamicProgressView: View {
                 showProgressView = true
             }
         }
+            .onReceive(NotificationCenter.default.publisher(for: .init("CLOSE_PROGRESS_VIEW")), perform: { _ in
+                showProgressView = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.67){
+                    progressBar.removeProgressView()
+                }
+            })
             .onReceive(NotificationCenter.default.publisher(for: .init("UPDATE_PROGRESS")))
         { output in
             if let info = output.userInfo, let progress = info["progress"] as? CGFloat {
@@ -158,8 +169,17 @@ struct DynamicProgressView: View {
                         showProgressView = false
                         showAlertView = true
                         
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            progressBar.hideStatusBar = true
+                        }
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3 ){
                             showAlertView = false
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                progressBar.hideStatusBar = false
+                            }
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6 ){
                                 progressBar.removeProgressView()
                             }
@@ -266,6 +286,7 @@ struct DynamicProgressView: View {
             Capsule()
                 .fill(.black)
                 .frame(width: 126, height: 36)
+                .offset(y:1)
         }
     }
 }
